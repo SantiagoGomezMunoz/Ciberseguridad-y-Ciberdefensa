@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<section class="narrow">
+  <h1>Transferir dinero</h1>
+  <p>Saldo disponible: <strong><%= cop(cuenta.saldo) %></strong></p>
+  <form method="post" action="/transferir">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <label>Cuenta destino (10 dígitos) <input name="destino" required inputmode="numeric" pattern="\d{10}" value="<%= form.destino || '' %>"></label>
+    <label>Monto en COP <input name="monto" required inputmode="decimal" value="<%= form.monto || '' %>"></label>
+    <label>Descripción (opcional) <input name="descripcion" maxlength="140" value="<%= form.descripcion || '' %>"></label>
+    <button>Enviar transferencia</button>
+  </form>
+</section>
+<%- include('partials/footer') %>

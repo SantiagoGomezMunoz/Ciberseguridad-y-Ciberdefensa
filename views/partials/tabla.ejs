@@ -1,0 +1,19 @@
+<% if (!items.length) { %>
+  <p>Aún no tienes movimientos. Haz tu primera transferencia desde la opción Transferir.</p>
+<% } else { %>
+<div class="scroll">
+<table>
+  <thead><tr><th>Fecha</th><th>Detalle</th><th>Descripción</th><th class="num">Monto</th></tr></thead>
+  <tbody>
+  <% items.forEach(t => { %>
+    <tr>
+      <td><%= fecha(t.creado_en) %></td>
+      <td><%= t.saliente ? 'Enviada a ' + t.num_destino : 'Recibida de ' + t.num_origen %></td>
+      <td><%= t.descripcion || '' %></td>
+      <td class="num"><%= (t.saliente ? '- ' : '+ ') + cop(t.monto) %></td>
+    </tr>
+  <% }) %>
+  </tbody>
+</table>
+</div>
+<% } %>

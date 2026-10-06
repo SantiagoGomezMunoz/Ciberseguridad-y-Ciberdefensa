@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banco Demo</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <a href="/" class="brand">Banco Demo</a>
+  <% if (user) { %>
+  <nav>
+    <a href="/dashboard">Inicio</a>
+    <a href="/transferir">Transferir</a>
+    <a href="/movimientos">Movimientos</a>
+    <a href="/perfil">Perfil</a>
+    <form method="post" action="/logout"><input type="hidden" name="_csrf" value="<%= csrf %>"><button class="link">Salir</button></form>
+  </nav>
+  <% } %>
+</header>
+<main>
+<% if (error) { %><p class="msg err" role="alert"><%= error %></p><% } %>
+<% if (ok) { %><p class="msg ok" role="status"><%= ok %></p><% } %>
