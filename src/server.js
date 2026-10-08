@@ -40,6 +40,7 @@ app.use((req, res, next) => {
   res.locals.user = req.session.user || null;
   res.locals.error = null;
   res.locals.ok = null;
+  res.locals.path = req.path;
   res.locals.cop = n => Number(n).toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 2, maximumFractionDigits: 2 });
   res.locals.fecha = d => new Date(d).toLocaleString('es-CO');
   if (req.method === 'POST' && req.body._csrf !== req.session.csrf) return res.status(403).send('Token CSRF inválido');

@@ -1,5 +1,5 @@
 <% if (!items.length) { %>
-  <p>Aún no tienes movimientos. Haz tu primera transferencia desde la opción Transferir.</p>
+  <p class="sub">Aún no tienes movimientos. Haz tu primera transferencia desde la opción Transferir.</p>
 <% } else { %>
 <div class="scroll">
 <table>
@@ -10,7 +10,7 @@
       <td><%= fecha(t.creado_en) %></td>
       <td><%= t.saliente ? 'Enviada a ' + t.num_destino : 'Recibida de ' + t.num_origen %></td>
       <td><%= t.descripcion || '' %></td>
-      <td class="num"><%= (t.saliente ? '- ' : '+ ') + cop(t.monto) %></td>
+      <td class="num <%= t.saliente ? 'out' : 'in' %>"><%= (t.saliente ? '− ' : '+ ') + cop(t.monto) %></td>
     </tr>
   <% }) %>
   </tbody>

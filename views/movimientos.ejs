@@ -1,8 +1,11 @@
 <%- include('partials/header') %>
 <h1>Movimientos</h1>
-<%- include('partials/tabla', { items }) %>
-<p class="pager">
-  <% if (pagina > 1) { %><a href="/movimientos?p=<%= pagina - 1 %>">Anterior</a><% } %>
-  <% if (hayMas) { %><a href="/movimientos?p=<%= pagina + 1 %>">Siguiente</a><% } %>
-</p>
+<p class="sub">Historial de entradas y salidas de tu cuenta.</p>
+<section class="card">
+  <%- include('partials/tabla', { items }) %>
+  <p class="pager">
+    <% if (pagina > 1) { %><a href="/movimientos?p=<%= pagina - 1 %>">← Anterior</a><% } %>
+    <% if (hayMas) { %><a href="/movimientos?p=<%= pagina + 1 %>">Siguiente →</a><% } %>
+  </p>
+</section>
 <%- include('partials/footer') %>

@@ -1,20 +1,26 @@
 <%- include('partials/header') %>
 <h1>Mi perfil</h1>
-<section>
-  <p>Nombre: <strong><%= u.nombre %></strong></p>
-  <p>Documento: <strong><%= u.documento %></strong></p>
-  <p>Correo: <strong><%= u.email %></strong></p>
-  <p>Cuenta: <strong><%= cuenta.numero %></strong> (<%= cuenta.tipo %>)</p>
-  <p>Cliente desde: <strong><%= fecha(u.creado_en) %></strong></p>
-</section>
-<section class="narrow">
-  <h2>Cambiar contraseña</h2>
-  <form method="post" action="/perfil/password">
-    <input type="hidden" name="_csrf" value="<%= csrf %>">
-    <label>Contraseña actual <input type="password" name="actual" required autocomplete="current-password"></label>
-    <label>Nueva contraseña <input type="password" name="nueva" required minlength="10" autocomplete="new-password"></label>
-    <label>Confirmar nueva contraseña <input type="password" name="nueva2" required minlength="10" autocomplete="new-password"></label>
-    <button>Guardar contraseña</button>
-  </form>
-</section>
+<p class="sub">Tus datos y la seguridad de tu cuenta.</p>
+<div class="grid2">
+  <section class="card">
+    <h2>Datos personales</h2>
+    <dl>
+      <dt>Nombre</dt><dd><%= u.nombre %></dd>
+      <dt>Documento</dt><dd><%= u.documento %></dd>
+      <dt>Correo</dt><dd><%= u.email %></dd>
+      <dt>Cuenta</dt><dd><%= cuenta.numero %> (<%= cuenta.tipo %>)</dd>
+      <dt>Cliente desde</dt><dd><%= fecha(u.creado_en) %></dd>
+    </dl>
+  </section>
+  <section class="card">
+    <h2>Cambiar contraseña</h2>
+    <form method="post" action="/perfil/password">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <label>Contraseña actual <input type="password" name="actual" required autocomplete="current-password"></label>
+      <label>Nueva contraseña <input type="password" name="nueva" required minlength="10" autocomplete="new-password"></label>
+      <label>Confirmar nueva contraseña <input type="password" name="nueva2" required minlength="10" autocomplete="new-password"></label>
+      <button>Guardar contraseña</button>
+    </form>
+  </section>
+</div>
 <%- include('partials/footer') %>

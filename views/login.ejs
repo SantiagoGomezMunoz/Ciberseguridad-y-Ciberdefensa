@@ -1,12 +1,16 @@
 <%- include('partials/header') %>
-<section class="narrow">
-  <h1>Iniciar sesión</h1>
-  <form method="post" action="/login">
-    <input type="hidden" name="_csrf" value="<%= csrf %>">
-    <label>Correo electrónico <input type="email" name="email" required autocomplete="username"></label>
-    <label>Contraseña <input type="password" name="password" required autocomplete="current-password"></label>
-    <button>Entrar</button>
-  </form>
-  <p>¿No tienes cuenta? <a href="/register">Regístrate</a></p>
-</section>
+<div class="auth">
+  <%- include('partials/info') %>
+  <section class="card">
+    <h1>Iniciar sesión</h1>
+    <p class="sub">Ingresa con tu correo y contraseña.</p>
+    <form method="post" action="/login">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <label>Correo electrónico <input type="email" name="email" required autocomplete="username"></label>
+      <label>Contraseña <input type="password" name="password" required autocomplete="current-password"></label>
+      <button>Entrar</button>
+    </form>
+    <p class="sub" style="margin:1rem 0 0">¿No tienes cuenta? <a href="/register">Regístrate</a></p>
+  </section>
+</div>
 <%- include('partials/footer') %>

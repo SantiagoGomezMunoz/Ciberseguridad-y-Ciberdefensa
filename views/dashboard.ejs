@@ -1,14 +1,17 @@
 <%- include('partials/header') %>
 <h1>Hola, <%= user.nombre %></h1>
-<section>
-  <h2>Cuenta de <%= cuenta.tipo %></h2>
-  <p>Número: <strong><%= cuenta.numero %></strong></p>
-  <p>Saldo disponible: <strong class="saldo"><%= cop(cuenta.saldo) %></strong></p>
-  <p><a class="btn" href="/transferir">Hacer una transferencia</a></p>
+<p class="sub">Este es el resumen de tu cuenta.</p>
+<section class="balance">
+  <div>
+    <p class="label">Saldo disponible · cuenta de <%= cuenta.tipo %></p>
+    <p class="amount"><%= cop(cuenta.saldo) %></p>
+    <p class="acct">N.º <%= cuenta.numero %></p>
+  </div>
+  <a class="btn" href="/transferir">Hacer una transferencia</a>
 </section>
-<section>
+<section class="card">
   <h2>Últimos movimientos</h2>
   <%- include('partials/tabla', { items: ultimos }) %>
-  <p><a href="/movimientos">Ver todos los movimientos</a></p>
+  <p style="margin:1rem 0 0"><a href="/movimientos">Ver todos los movimientos</a></p>
 </section>
 <%- include('partials/footer') %>

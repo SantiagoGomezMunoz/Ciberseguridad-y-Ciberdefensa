@@ -1,15 +1,19 @@
 <%- include('partials/header') %>
-<section class="narrow">
-  <h1>Crear cuenta</h1>
-  <form method="post" action="/register">
-    <input type="hidden" name="_csrf" value="<%= csrf %>">
-    <label>Nombre completo <input name="nombre" required maxlength="100" value="<%= form.nombre || '' %>"></label>
-    <label>Documento de identidad <input name="documento" required inputmode="numeric" pattern="\d{6,12}" value="<%= form.documento || '' %>"></label>
-    <label>Correo electrónico <input type="email" name="email" required value="<%= form.email || '' %>" autocomplete="username"></label>
-    <label>Contraseña (mínimo 10 caracteres, letras y números) <input type="password" name="password" required minlength="10" autocomplete="new-password"></label>
-    <label>Confirmar contraseña <input type="password" name="password2" required minlength="10" autocomplete="new-password"></label>
-    <button>Crear cuenta</button>
-  </form>
-  <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
-</section>
+<div class="auth">
+  <%- include('partials/info') %>
+  <section class="card">
+    <h1>Crear cuenta</h1>
+    <p class="sub">Abre tu cuenta de ahorros en pocos pasos.</p>
+    <form method="post" action="/register">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <label>Nombre completo <input name="nombre" required maxlength="100" value="<%= form.nombre || '' %>"></label>
+      <label>Documento de identidad <input name="documento" required inputmode="numeric" pattern="\d{6,12}" value="<%= form.documento || '' %>"></label>
+      <label>Correo electrónico <input type="email" name="email" required value="<%= form.email || '' %>" autocomplete="username"></label>
+      <label>Contraseña (mínimo 10 caracteres, letras y números) <input type="password" name="password" required minlength="10" autocomplete="new-password"></label>
+      <label>Confirmar contraseña <input type="password" name="password2" required minlength="10" autocomplete="new-password"></label>
+      <button>Crear cuenta</button>
+    </form>
+    <p class="sub" style="margin:1rem 0 0">¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+  </section>
+</div>
 <%- include('partials/footer') %>

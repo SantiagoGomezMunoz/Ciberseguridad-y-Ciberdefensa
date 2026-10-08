@@ -8,13 +8,12 @@
 </head>
 <body>
 <header>
-  <a href="/" class="brand">Banco Demo</a>
+  <a href="/" class="brand"><span class="logo">B</span>Banco Demo</a>
   <% if (user) { %>
-  <nav>
-    <a href="/dashboard">Inicio</a>
-    <a href="/transferir">Transferir</a>
-    <a href="/movimientos">Movimientos</a>
-    <a href="/perfil">Perfil</a>
+  <nav aria-label="Principal">
+    <% [['/dashboard','Inicio'],['/transferir','Transferir'],['/movimientos','Movimientos'],['/perfil','Perfil']].forEach(l => { %>
+      <a href="<%= l[0] %>" class="<%= path === l[0] ? 'active' : '' %>"<%- path === l[0] ? ' aria-current="page"' : '' %>><%= l[1] %></a>
+    <% }) %>
     <form method="post" action="/logout"><input type="hidden" name="_csrf" value="<%= csrf %>"><button class="link">Salir</button></form>
   </nav>
   <% } %>
