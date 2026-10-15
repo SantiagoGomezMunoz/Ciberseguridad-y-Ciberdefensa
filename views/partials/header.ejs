@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banco Demo</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <a href="/" class="brand"><span class="logo">B</span>Banco Demo</a>
+  <% if (user) { %>
+  <nav aria-label="Principal">
+    <% [['/dashboard','Inicio'],['/transferir','Transferir'],['/movimientos','Movimientos'],['/perfil','Perfil']].forEach(l => { %>
+      <a href="<%= l[0] %>" class="<%= path === l[0] ? 'active' : '' %>"<%- path === l[0] ? ' aria-current="page"' : '' %>><%= l[1] %></a>
+    <% }) %>
+    <form method="post" action="/logout"><input type="hidden" name="_csrf" value="<%= csrf %>"><button class="link">Salir</button></form>
+  </nav>
+  <% } %>
+</header>
+<main>
+<% if (error) { %><p class="msg err" role="alert"><%= error %></p><% } %>
+<% if (ok) { %><p class="msg ok" role="status"><%= ok %></p><% } %>
