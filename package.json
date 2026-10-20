@@ -8,10 +8,13 @@
     "dev": "node --watch src/server.js",
     "demo": "node scripts/demo.js",
     "db:init": "psql \"$DATABASE_URL\" -f db/schema.sql",
-    "db:seed": "node scripts/seed.js"
+    "db:seed": "node scripts/seed.js",
+    "cert": "mkdir -p certs && openssl req -x509 -newkey rsa:2048 -nodes -keyout certs/key.pem -out certs/cert.pem -days 365 -subj \"/CN=localhost\"",
+    "check": "node scripts/check-headers.js",
+    "audit": "npm audit --omit=dev"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "license": "MIT",
   "dependencies": {

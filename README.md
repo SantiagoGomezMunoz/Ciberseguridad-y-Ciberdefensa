@@ -65,3 +65,18 @@ db/schema.sql   tablas
 views/          plantillas EJS
 public/         estilos
 ```
+
+## HTTPS (corrección del hallazgo 3.1)
+
+```bash
+npm run cert            # genera un certificado autofirmado en certs/ (solo laboratorio)
+# en .env:
+SSL_KEY=certs/key.pem
+SSL_CERT=certs/cert.pem
+HTTP_REDIRECT_PORT=8080   # opcional: redirige http -> https
+npm start               # https://localhost:3000
+```
+Con certificado activo la cookie de sesión se marca `Secure` y se habilita HSTS. En producción usa un certificado de una CA (p. ej. Let's Encrypt) o un proxy inverso con `COOKIE_SECURE=true` y `TRUST_PROXY=true`.
+
+## Registro de eventos de seguridad (A09)
+Los eventos (login exitoso/fallido, bloqueo, logout, CSRF inválido, accesos sin sesión, límites de tasa, transferencias, cambio de contraseña y errores) se guardan en `logs/security.log` (JSON por línea). Protege y revisa ese archivo periódicamente.

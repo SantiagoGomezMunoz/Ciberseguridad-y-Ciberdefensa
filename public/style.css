@@ -79,3 +79,6 @@ dt { color:var(--muted); } dd { margin:0; font-weight:600; }
 @media (max-width:560px) { header { padding:.75rem 1rem; } .balance .amount { font-size:1.9rem; } .card { padding:1.15rem; } }
 @media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
 @media (max-width:759px) { .auth .card { order:-1; } }
+
+/* Margen superior (reemplaza estilos en línea para cumplir la CSP sin unsafe-inline) */
+.mt { margin: 1rem 0 0; }
